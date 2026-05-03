@@ -134,6 +134,49 @@ main {
     stroke: currentColor;
 }
 
+/* Filter section — on work page */
+.filter-section {
+    margin-top: 60px;
+}
+
+.filter-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 16px;
+}
+
+.filter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    padding: 8px 0;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--gray);
+    cursor: pointer;
+    transition: color 0.2s;
+    font-family: var(--font);
+    letter-spacing: -0.01em;
+}
+
+.filter-btn:hover {
+    color: var(--black);
+}
+
+.filter-btn.active {
+    color: var(--black);
+    font-weight: 500;
+}
+
 /* Skills — bottom of left column */
 .skills-list {
     display: flex;
@@ -156,6 +199,98 @@ main {
     display: flex;
     flex-direction: column;
     padding-top: 80px;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 40px;
+}
+
+.story-section {
+    margin-bottom: 48px;
+}
+
+.story-text {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1.65;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+}
+
+.milestone-heading {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    margin-top: 32px;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.timeline-entry {
+    display: flex;
+    gap: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.timeline-entry:last-child {
+    border-bottom: none;
+}
+
+.timeline-date {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray);
+    min-width: 140px;
+    letter-spacing: -0.01em;
+}
+
+.timeline-event {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+}
+
+.timeline-section {
+    margin-top: 60px;
+}
+
+.timeline-markers {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.timeline-year {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray);
+    min-width: 50px;
+}
+
+.timeline-label {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--black);
+    letter-spacing: -0.01em;
 }
 
 .tagline {
@@ -367,6 +502,102 @@ main {
     color: var(--gray);
     margin-top: auto;
     padding-top: 10px;
+}
+
+/* ===========================
+   PROJECT META — on project pages
+   =========================== */
+.project-meta {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meta-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--gray);
+}
+
+.meta-value {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--black);
+    letter-spacing: -0.01em;
+}
+
+/* ===========================
+   PROJECT CONTENT
+   =========================== */
+.project-content {
+    padding-top: 60px;
+}
+
+.project-section {
+    margin-bottom: 60px;
+}
+
+.subsection {
+    margin-top: 32px;
+    padding-left: 20px;
+    border-left: 2px solid var(--light-gray);
+}
+
+.subsection-title {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+}
+
+/* Project CTAs */
+.project-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--light-gray);
+}
+
+.cta-primary,
+.cta-secondary {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    transition: opacity 0.2s, transform 0.2s;
+    width: fit-content;
+}
+
+.cta-primary {
+    background: var(--black);
+    color: var(--white);
+    border-radius: 999px;
+}
+
+.cta-primary:hover {
+    opacity: 0.85;
+    transform: scale(1.03);
+}
+
+.cta-secondary {
+    color: var(--black);
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.cta-secondary:hover {
+    border-color: var(--black);
 }
 
 /* ===========================

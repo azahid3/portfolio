@@ -116,7 +116,7 @@ main {
 .socials {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     margin-top: 60px;
 }
 
@@ -125,9 +125,14 @@ main {
     transition: opacity 0.2s;
     display: flex;
     align-items: center;
+    width: fit-content;
 }
 
-.socials a:hover { opacity: 0.4; }
+.socials a:hover { opacity: 0.5; }
+
+.socials svg {
+    stroke: currentColor;
+}
 
 /* Skills — bottom of left column */
 .skills-list {

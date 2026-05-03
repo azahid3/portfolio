@@ -3,344 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arhum Zahid — Solutions Engineer</title>
+    <title>Arhum Zahid</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- NAVIGATION -->
-    <nav id="navbar">
-        <div class="nav-inner">
-            <a href="#" class="nav-logo">AZ<span class="logo-dot">.</span></a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="mailto:zarhum3@gmail.com" class="nav-cta">Get in Touch</a>
+    <!-- NAV -->
+    <nav>
+        <span class="nav-name">ARHUM ZAHID</span>
+        <div class="nav-links">
+            <a href="#about">ABOUT</a>
+            <a href="#work">WORK</a>
+            <a href="https://www.linkedin.com/in/arhum-zahid/" target="_blank" rel="noopener">RESUME</a>
+            <button class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section id="hero">
-        <canvas id="hero-canvas"></canvas>
-        <div class="hero-content">
-            <div class="hero-pill">
-                <span class="status-dot"></span>
-                <span>Open to connections</span>
-            </div>
-            <h1 class="hero-title">
-                <span class="title-line muted">I'm a</span>
-                <span class="title-typewriter">
-                    <span class="typewriter-text"></span><span class="typewriter-cursor">|</span>
-                </span>
-            </h1>
-            <p class="hero-sub">
-                Bridging complex technology with real-world impact at
-                <strong>Arrow Electronics</strong> — and building <strong>Khaana</strong>,
-                a voice-first cooking assistant, from the ground up.
-            </p>
-            <div class="hero-actions">
-                <a href="#projects" class="btn-primary">View Portfolio</a>
-                <a href="#experience" class="btn-outline">Experience</a>
-            </div>
-        </div>
-        <div class="hero-footer">
-            <div class="scroll-hint">
-                <span>Scroll</span>
-                <div class="scroll-track"><div class="scroll-thumb"></div></div>
-                <span>to explore</span>
-            </div>
-            <div class="hero-badges">
-                <span class="badge"><span class="badge-icon">⚡</span>Arrow Electronics</span>
-                <span class="badge"><span class="badge-icon">🍽️</span>Khaana</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-        <div class="container">
-            <div class="section-tag">About</div>
-            <div class="about-layout">
-                <div class="about-left">
-                    <h2 class="about-heading">Engineer.<br>Builder.<br>Explorer.</h2>
-                    <div class="about-body">
-                        <p>
-                            I'm <strong>Arhum Zahid</strong> — a Solutions Engineer at
-                            <strong>Arrow Electronics</strong> where I help organizations
-                            architect and deploy technical solutions that actually move the needle.
-                        </p>
-                        <p>
-                            When I'm not deep in enterprise tech, I'm leading growth and marketing
-                            for <strong>Khaana</strong> — a voice-first cooking assistant that makes
-                            cooking more intuitive, personal, and fun.
-                        </p>
-                        <p>
-                            And when I'm not at a keyboard? I'm somewhere new on the globe,
-                            collecting experiences instead of just passport stamps.
-                        </p>
-                    </div>
-                    <a href="mailto:zarhum3@gmail.com" class="btn-primary mt-32">Say Hello →</a>
+    <!-- MAIN — 3 column layout -->
+    <main>
+        <!-- LEFT COLUMN -->
+        <div class="left-col">
+            <div>
+                <div class="intro">
+                    <h1>hi!</h1>
+                    <h1>i'm arhum.</h1>
                 </div>
-                <div class="about-right">
-                    <div class="passion-card" style="--delay: 0s">
-                        <div class="passion-icon">⚡</div>
-                        <div class="passion-content">
-                            <h3>Engineering</h3>
-                            <p>Turning complex technical challenges into elegant, scalable solutions. From API integrations to enterprise architecture.</p>
-                        </div>
-                    </div>
-                    <div class="passion-card khaana-card" style="--delay: 0.1s">
-                        <div class="passion-icon">🍽️</div>
-                        <div class="passion-content">
-                            <h3>Building Khaana</h3>
-                            <p>Growing a voice-first cooking app from zero to one. Marketing, growth loops, user love — doing it all.</p>
-                        </div>
-                    </div>
-                    <div class="passion-card" style="--delay: 0.2s">
-                        <div class="passion-icon">🌍</div>
-                        <div class="passion-content">
-                            <h3>Traveling</h3>
-                            <p>Every country is a new perspective. A global mindset shapes how I think about products, people, and problems.</p>
-                        </div>
-                    </div>
+
+                <!-- Socials -->
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/arhum-zahid/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://github.com/azahid3" target="_blank" rel="noopener" aria-label="GitHub">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Skills — bottom of left column -->
+            <div class="skills-list">
+                <span>solutions engineering</span>
+                <span>cybersecurity</span>
+                <span>growth marketing</span>
+                <span>cloud infrastructure</span>
+                <span>pre-sales</span>
+            </div>
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="center-col">
+            <p class="tagline"><span id="typewriter"></span><span class="cursor">|</span></p>
+
+            <div class="sections-grid">
+                <div class="section-block">
+                    <h3>[01] &nbsp;solutions engineer</h3>
+                    <ul>
+                        <li>arrow electronics &mdash; nutanix, hybrid cloud & edge computing</li>
+                        <li>pre-sales engineering, technical demos, juniper networks</li>
+                    </ul>
+                </div>
+
+                <div class="section-block">
+                    <h3>[03] &nbsp;growth & marketing lead</h3>
+                    <ul>
+                        <li><a href="https://www.khaanaai.com" target="_blank" rel="noopener">khaana</a> &mdash; voice-first cooking assistant</li>
+                        <li>B2C user acquisition, brand building, growth loops</li>
+                    </ul>
+                </div>
+
+                <div class="section-block">
+                    <h3>[02] &nbsp;cybersecurity engineer</h3>
+                    <ul>
+                        <li>institute for defense analyses</li>
+                        <li>powershell automation, vulnerability remediation, tenable</li>
+                    </ul>
+                </div>
+
+                <div class="section-block">
+                    <h3>[04] &nbsp;IT & cybersecurity</h3>
+                    <ul>
+                        <li>navy federal credit union &mdash; governance & vuln mgmt</li>
+                        <li>george mason university &mdash; B.S. in IT, cybersecurity</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Photo -->
+            <div class="photo-area" id="about">
+                <div class="photo-placeholder">
+                    <span>photo coming soon</span>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience">
-        <div class="container">
-            <div class="section-tag">Experience</div>
-            <h2 class="section-heading">Where I've Worked</h2>
-
-            <!-- Arrow Electronics — Corporate (most recent) -->
-            <div class="exp-card" data-scroll>
-                <div class="exp-glow"></div>
-                <div class="exp-header">
-                    <div class="exp-company">
-                        <h3>Solutions Engineer</h3>
-                        <span class="company-name">Arrow Electronics</span>
-                    </div>
-                    <div class="exp-meta">
-                        <span class="exp-badge corp-badge">Full-time</span>
-                        <span class="exp-date">2025 — Present</span>
-                    </div>
-                </div>
-                <div class="exp-body">
-                    <p>
-                        Supporting solutions engineering focused on Nutanix — spanning edge computing
-                        and hybrid cloud infrastructure. Working alongside the sales team to run technical
-                        discovery, deliver product demos, and architect solutions that map directly to
-                        customer environments. Engaging partners like Juniper Networks to bring
-                        full-stack infrastructure proposals to enterprise and mid-market clients.
-                    </p>
-                    <div class="exp-skills">
-                        <span>Nutanix</span>
-                        <span>Juniper Networks</span>
-                        <span>Hybrid Cloud</span>
-                        <span>Edge Computing</span>
-                        <span>Pre-Sales Engineering</span>
-                        <span>Technical Demos</span>
-                        <span>Solutions Architecture</span>
-                        <span>Partner Ecosystems</span>
-                    </div>
-                    <a href="https://www.linkedin.com/in/arhum-zahid/" target="_blank" rel="noopener" class="exp-linkedin">View on LinkedIn ↗</a>
-                </div>
+        <!-- RIGHT COLUMN -->
+        <div class="right-col">
+            <div class="right-top">
+                <span class="status-badge">&#9670; open to connections :)</span>
+                <a href="#work" class="view-work">view work &nbsp;&#8658;</a>
+                <span class="location">&#9734; based in Virginia</span>
             </div>
-
-            <!-- Institute for Defense Analyses -->
-            <div class="exp-card" data-scroll>
-                <div class="exp-glow"></div>
-                <div class="exp-header">
-                    <div class="exp-company">
-                        <h3>Cybersecurity Engineer</h3>
-                        <span class="company-name">Institute for Defense Analyses</span>
-                    </div>
-                    <div class="exp-meta">
-                        <span class="exp-badge corp-badge">Internship</span>
-                        <span class="exp-date">Mar 2025 — Present</span>
-                    </div>
-                </div>
-                <div class="exp-body">
-                    <p>
-                        Working within a defense research environment to harden enterprise infrastructure.
-                        Built PowerShell automation to streamline workstation remediation, cutting turnaround
-                        by 70%. Remediating vulnerabilities across Windows Server environments and
-                        consolidating security findings across 2,000+ assets into leadership-ready reports
-                        using Tenable Security Center.
-                    </p>
-                    <div class="exp-skills">
-                        <span>PowerShell Automation</span>
-                        <span>Vulnerability Remediation</span>
-                        <span>Tenable / Nessus</span>
-                        <span>Windows Server</span>
-                        <span>Active Directory</span>
-                    </div>
-                </div>
+            <div class="right-bottom">
+                <a href="mailto:zarhum3@gmail.com">zarhum3@gmail.com</a>
+                <span>&copy; 2025</span>
             </div>
+        </div>
+    </main>
 
-            <!-- Khaana — Casual -->
-            <div class="exp-card khaana-exp" data-scroll>
-                <div class="exp-glow khaana-glow"></div>
-                <div class="exp-header">
-                    <div class="exp-company">
-                        <h3>Growth & Marketing Lead</h3>
-                        <span class="company-name khaana-name">Khaana 🍽️</span>
-                    </div>
-                    <div class="exp-meta">
-                        <span class="exp-badge khaana-badge">Startup</span>
-                        <span class="exp-date">2024 — Present</span>
-                    </div>
-                </div>
-                <div class="exp-body">
-                    <p>
-                        Khaana is a voice-first cooking assistant — think of it as your sous chef
-                        that actually listens. I lead all things growth and marketing for the B2C app.
-                        That means user acquisition, building growth loops, crafting the brand story,
-                        and making sure the right people find us. It's scrappy, it's fun, and it's mine to own.
-                    </p>
-                    <div class="exp-skills khaana-skills">
-                        <span>Growth Marketing</span>
-                        <span>B2C Strategy</span>
-                        <span>User Acquisition</span>
-                        <span>Brand Building</span>
-                        <span>Voice AI</span>
-                    </div>
-                </div>
+    <!-- WORK SECTION -->
+    <section id="work" class="work-section">
+        <h2 class="work-heading">work</h2>
+        <div class="work-grid">
+            <a href="https://www.khaanaai.com" target="_blank" rel="noopener" class="work-card">
+                <span class="work-num">[01]</span>
+                <h3>Khaana</h3>
+                <p>Voice-first cooking assistant. Leading growth & marketing for a B2C app — user acquisition, brand, and growth loops.</p>
+                <span class="work-tag">startup &middot; growth</span>
+            </a>
+            <div class="work-card">
+                <span class="work-num">[02]</span>
+                <h3>Arrow Electronics</h3>
+                <p>Solutions engineering focused on Nutanix — edge computing, hybrid cloud, technical demos, and partner ecosystem.</p>
+                <span class="work-tag">enterprise &middot; SE</span>
             </div>
-
-            <!-- Navy Federal Credit Union -->
-            <div class="exp-card" data-scroll>
-                <div class="exp-glow"></div>
-                <div class="exp-header">
-                    <div class="exp-company">
-                        <h3>IT Governance & Vulnerability Management</h3>
-                        <span class="company-name">Navy Federal Credit Union</span>
-                    </div>
-                    <div class="exp-meta">
-                        <span class="exp-badge corp-badge">Internship</span>
-                        <span class="exp-date">May 2023 — Feb 2025</span>
-                    </div>
-                </div>
-                <div class="exp-body">
-                    <p>
-                        Held two back-to-back roles at one of the largest credit unions in the US. As a
-                        Governance Analyst, conducted compliance audits across 3,400+ installations,
-                        managed privileged access for 2,500+ requests via CyberArk, and led incident
-                        response for a zero-day that secured 300+ endpoints in under 3 hours. As a
-                        Vulnerability Management Analyst, automated monthly patching across 1,500+
-                        endpoints and leveraged Splunk for continuous asset monitoring.
-                    </p>
-                    <div class="exp-skills">
-                        <span>Splunk</span>
-                        <span>CyberArk PAM</span>
-                        <span>Patch Management</span>
-                        <span>Compliance Auditing</span>
-                        <span>NIST SP 800-53</span>
-                        <span>Incident Response</span>
-                    </div>
-                </div>
+            <div class="work-card">
+                <span class="work-num">[03]</span>
+                <h3>CrowdStrike Falcon Lab</h3>
+                <p>Simulated ransomware mapped to MITRE ATT&CK T1486. 100% detection rate, 60% faster triage through forensic analysis.</p>
+                <span class="work-tag">cybersecurity &middot; lab</span>
+            </div>
+            <div class="work-card">
+                <span class="work-num">[04]</span>
+                <h3>Rainbow Acres Farm</h3>
+                <p>Built & secured a WordPress platform — automated inventory, reCAPTCHA hardening. 40% more orders, 60% customer growth.</p>
+                <span class="work-tag">web dev &middot; automation</span>
             </div>
         </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section id="projects">
-        <div class="container">
-            <div class="section-tag">Portfolio</div>
-            <h2 class="section-heading">Selected Work</h2>
-            <p class="section-sub">More projects coming soon — reach out if you want to see the full picture.</p>
-            <div class="projects-grid">
-                <div class="project-card featured" data-scroll>
-                    <div class="project-visual khaana-visual">
-                        <div class="visual-inner">
-                            <span class="visual-label">🍽️ Khaana</span>
-                            <span class="visual-sub">Voice-First Cooking</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <span class="proj-tag">Startup · B2C · Voice AI</span>
-                        <h3>Khaana — Voice First Cooking Assistant</h3>
-                        <p>Leading growth and marketing for a voice-first cooking assistant. Building from zero — users, loops, brand, and beyond. Making cooking feel like a conversation.</p>
-                        <a href="https://www.khaanaai.com" target="_blank" rel="noopener" class="proj-link">Visit Khaana ↗</a>
-                    </div>
+    <!-- DARK FOOTER -->
+    <footer class="dark-footer">
+        <div class="footer-top">
+            <div class="footer-left">
+                <p class="footer-tagline">AN ENGINEER WHO BUILDS, SECURES & SCALES</p>
+                <a href="mailto:zarhum3@gmail.com" class="footer-email">ZARHUM3@GMAIL.COM</a>
+            </div>
+            <div class="footer-right">
+                <div class="footer-col">
+                    <span class="footer-col-title">SOCIAL</span>
+                    <a href="https://www.linkedin.com/in/arhum-zahid/" target="_blank" rel="noopener">LINKEDIN</a>
+                    <a href="https://github.com/azahid3" target="_blank" rel="noopener">GITHUB</a>
                 </div>
-                <div class="project-card" data-scroll>
-                    <div class="project-visual corp-visual">
-                        <div class="visual-inner">
-                            <span class="visual-label">⚡</span>
-                            <span class="visual-sub">Enterprise</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <span class="proj-tag">Enterprise · Solutions Eng</span>
-                        <h3>Enterprise Integration Platform</h3>
-                        <p>Technical solution architecture connecting enterprise systems across complex tech stacks at Arrow Electronics. Details available on request.</p>
-                        <a href="#contact" class="proj-link">Details on Request →</a>
-                    </div>
-                </div>
-                <div class="project-card" data-scroll>
-                    <div class="project-visual" style="background: radial-gradient(ellipse at 40% 50%, rgba(34,197,94,0.1) 0%, transparent 65%), radial-gradient(ellipse at 75% 25%, rgba(0,204,255,0.06) 0%, transparent 55%), var(--bg-surface);">
-                        <div class="visual-inner">
-                            <span class="visual-label">🌾</span>
-                            <span class="visual-sub">Web · Automation</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <span class="proj-tag">Web Dev · Cybersecurity</span>
-                        <h3>Rainbow Acres Farm — Inventory Automation</h3>
-                        <p>Built and secured a WordPress platform for a farm business, automating inventory processes and integrating reCAPTCHA to harden against bots. Drove a 40% increase in orders and 60% growth in the customer base.</p>
-                        <a href="#contact" class="proj-link">Learn More →</a>
-                    </div>
-                </div>
-                <div class="project-card" data-scroll>
-                    <div class="project-visual" style="background: radial-gradient(ellipse at 40% 50%, rgba(239,68,68,0.1) 0%, transparent 65%), radial-gradient(ellipse at 75% 25%, rgba(168,85,247,0.07) 0%, transparent 55%), var(--bg-surface);">
-                        <div class="visual-inner">
-                            <span class="visual-label">🛡️</span>
-                            <span class="visual-sub">Cybersecurity · Lab</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <span class="proj-tag">EDR · Threat Simulation</span>
-                        <h3>CrowdStrike Falcon — EDR Threat Lab</h3>
-                        <p>Simulated a ransomware attack using PowerShell, triggering CrowdStrike Falcon detections mapped to MITRE ATT&CK T1486. Conducted forensic analysis of the process tree and IOCs, achieving a 100% detection rate and cutting triage time by 60%.</p>
-                        <a href="#contact" class="proj-link">Learn More →</a>
-                    </div>
+                <div class="footer-col">
+                    <span class="footer-col-title">SECTIONS</span>
+                    <a href="#about">ABOUT</a>
+                    <a href="#work">WORK</a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-        <div class="container">
-            <div class="contact-inner">
-                <div class="section-tag">Contact</div>
-                <h2>Let's build<br><em>something great.</em></h2>
-                <p>
-                    Whether it's an opportunity, a collaboration, or just a good
-                    conversation — I'm always open to connecting.
-                </p>
-                <div class="contact-actions">
-                    <a href="mailto:zarhum3@gmail.com" class="btn-primary btn-xl">Send an Email →</a>
-                    <a href="https://www.linkedin.com/in/arhum-zahid/" target="_blank" rel="noopener" class="btn-outline btn-xl">LinkedIn ↗</a>
-                </div>
+        <!-- Scrolling marquee -->
+        <div class="marquee">
+            <div class="marquee-track">
+                <span>ARHUM ZAHID</span>
+                <span>ARHUM ZAHID</span>
+                <span>ARHUM ZAHID</span>
+                <span>ARHUM ZAHID</span>
+                <span>ARHUM ZAHID</span>
+                <span>ARHUM ZAHID</span>
+                <span>ARHUM ZAHID</span>
+                <span>ARHUM ZAHID</span>
             </div>
         </div>
-        <footer>
-            <div class="footer-inner">
-                <span>© 2025 Arhum Zahid</span>
-                <span>Built with intention.</span>
-            </div>
-        </footer>
-    </section>
+
+        <div class="footer-bottom">
+            <span>&copy; 2025 ARHUM ZAHID.</span>
+            <span>KEEP BUILDING :)</span>
+            <span>&#9670; CURRENTLY IN: VIRGINIA</span>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

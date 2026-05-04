@@ -725,29 +725,85 @@ main {
 /* ===========================
    SCROLL ANIMATIONS
    =========================== */
+
+/* Default states — hidden until scroll triggers */
 .section-block,
-.work-card {
+.work-card,
+.project-section,
+.story-section,
+.meta-item,
+.timeline-entry {
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Visible state — triggered by scroll */
 .section-block.visible,
-.work-card.visible {
+.work-card.visible,
+.project-section.visible,
+.story-section.visible,
+.meta-item.visible,
+.timeline-entry.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Stagger */
+/* Staggered animations for section blocks */
 .section-block:nth-child(1) { transition-delay: 0s; }
-.section-block:nth-child(2) { transition-delay: 0.1s; }
-.section-block:nth-child(3) { transition-delay: 0.2s; }
-.section-block:nth-child(4) { transition-delay: 0.3s; }
+.section-block:nth-child(2) { transition-delay: 0.12s; }
+.section-block:nth-child(3) { transition-delay: 0.24s; }
+.section-block:nth-child(4) { transition-delay: 0.36s; }
 
+/* Staggered animations for work cards */
 .work-card:nth-child(1) { transition-delay: 0s; }
-.work-card:nth-child(2) { transition-delay: 0.08s; }
-.work-card:nth-child(3) { transition-delay: 0.16s; }
-.work-card:nth-child(4) { transition-delay: 0.24s; }
+.work-card:nth-child(2) { transition-delay: 0.1s; }
+.work-card:nth-child(3) { transition-delay: 0.2s; }
+.work-card:nth-child(4) { transition-delay: 0.3s; }
+
+/* Staggered animations for story sections */
+.story-section:nth-child(1) { transition-delay: 0s; }
+.story-section:nth-child(2) { transition-delay: 0.1s; }
+.story-section:nth-child(3) { transition-delay: 0.2s; }
+.story-section:nth-child(4) { transition-delay: 0.3s; }
+.story-section:nth-child(5) { transition-delay: 0.4s; }
+
+/* Staggered animations for project meta items */
+.meta-item:nth-child(1) { transition-delay: 0s; }
+.meta-item:nth-child(2) { transition-delay: 0.08s; }
+.meta-item:nth-child(3) { transition-delay: 0.16s; }
+.meta-item:nth-child(4) { transition-delay: 0.24s; }
+
+/* Staggered animations for timeline entries */
+.timeline-entry:nth-child(1) { transition-delay: 0s; }
+.timeline-entry:nth-child(2) { transition-delay: 0.1s; }
+.timeline-entry:nth-child(3) { transition-delay: 0.2s; }
+.timeline-entry:nth-child(4) { transition-delay: 0.3s; }
+.timeline-entry:nth-child(5) { transition-delay: 0.4s; }
+
+/* Heading animations */
+h1, h2, h3 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+h1.visible, h2.visible, h3.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Scroll progress indicator */
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--black);
+    transition: width 0.1s ease;
+    z-index: 101;
+}
 
 /* ===========================
    RESPONSIVE

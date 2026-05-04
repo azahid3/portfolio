@@ -1,17 +1,47 @@
 /* ================================================
-   SCROLL REVEAL
+   SCROLL REVEAL — Intersection Observer
    ================================================ */
-const observer = new IntersectionObserver((entries) => {
+const scrollObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            // Stop observing once element is visible for better performance
+            scrollObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
-
-document.querySelectorAll('.section-block, .work-card').forEach(el => {
-    observer.observe(el);
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
 });
+
+// Observe all animatable elements
+const animatableElements = document.querySelectorAll(
+    '.section-block, .work-card, .project-section, .story-section, ' +
+    '.meta-item, .timeline-entry, h1, h2, h3'
+);
+animatableElements.forEach(el => {
+    scrollObserver.observe(el);
+});
+
+/* ================================================
+   SCROLL PROGRESS INDICATOR
+   ================================================ */
+function updateScrollProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+    let indicator = document.querySelector('.scroll-indicator');
+    if (!indicator) {
+        indicator = document.createElement('div');
+        indicator.className = 'scroll-indicator';
+        document.body.appendChild(indicator);
+    }
+    indicator.style.width = scrollPercent + '%';
+}
+
+window.addEventListener('scroll', updateScrollProgress, { passive: true });
+updateScrollProgress(); // Initial call
 
 /* ================================================
    SMOOTH SCROLL

@@ -367,6 +367,15 @@ main {
     font-weight: 400;
 }
 
+.profile-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+}
+
 /* RIGHT COLUMN — sticky */
 .right-col {
     width: 260px;

@@ -561,6 +561,8 @@ main {
     border-radius: 8px;
     text-align: center;
     transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
 }
 
 .cert-badge:hover {
@@ -575,11 +577,13 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
-.cert-icon svg {
+.cert-icon img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 
 .cert-badge h4 {

@@ -10,17 +10,36 @@
     --gray: #888;
     --light-gray: #e0e0e0;
     --page-pad: 20px;
+
+    /* Light mode colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9f9f9;
+    --text-primary: #000000;
+    --text-secondary: #888888;
+    --border-color: #e0e0e0;
+    --nav-bg: #ffffff;
+}
+
+/* Dark mode */
+html.dark-mode {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --border-color: #3a3a3a;
+    --nav-bg: #1a1a1a;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
     font-family: var(--font);
-    background: var(--white);
-    color: var(--black);
+    background: var(--bg-primary);
+    color: var(--text-primary);
     line-height: 1.5;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -41,7 +60,9 @@ nav {
     align-items: center;
     padding: 20px 28px;
     z-index: 100;
-    background: var(--white);
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .nav-name {
@@ -79,7 +100,51 @@ nav {
     display: block;
     width: 20px;
     height: 1.5px;
-    background: var(--black);
+    background: var(--text-primary);
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    margin-right: 12px;
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--text-primary);
+    color: var(--text-primary);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.sun-icon {
+    position: absolute;
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.moon-icon {
+    position: absolute;
+    opacity: 0;
+    transform: rotate(-180deg);
+}
+
+html.dark-mode .sun-icon {
+    opacity: 0;
+    transform: rotate(180deg);
+}
+
+html.dark-mode .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg);
 }
 
 /* ===========================
@@ -121,7 +186,7 @@ main {
 }
 
 .socials a {
-    color: var(--black);
+    color: var(--text-primary);
     transition: opacity 0.2s;
     display: flex;
     align-items: center;
@@ -144,7 +209,7 @@ main {
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--black);
+    color: var(--text-primary);
     margin-bottom: 16px;
 }
 
@@ -161,7 +226,7 @@ main {
     text-align: left;
     font-size: 14px;
     font-weight: 300;
-    color: var(--gray);
+    color: var(--text-secondary);
     cursor: pointer;
     transition: color 0.2s;
     font-family: var(--font);
@@ -169,11 +234,11 @@ main {
 }
 
 .filter-btn:hover {
-    color: var(--black);
+    color: var(--text-primary);
 }
 
 .filter-btn.active {
-    color: var(--black);
+    color: var(--text-primary);
     font-weight: 500;
 }
 
@@ -187,7 +252,7 @@ main {
 .skills-list span {
     font-size: 16px;
     font-weight: 300;
-    color: var(--black);
+    color: var(--text-primary);
     padding: 14px 0;
     border-top: 1px solid var(--light-gray);
     letter-spacing: -0.01em;
@@ -215,7 +280,7 @@ main {
 .story-text {
     font-size: 15px;
     font-weight: 300;
-    color: var(--black);
+    color: var(--text-primary);
     line-height: 1.65;
     margin-bottom: 16px;
     letter-spacing: -0.01em;
@@ -249,7 +314,7 @@ main {
 .timeline-date {
     font-size: 13px;
     font-weight: 500;
-    color: var(--gray);
+    color: var(--text-secondary);
     min-width: 140px;
     letter-spacing: -0.01em;
 }
@@ -257,7 +322,7 @@ main {
 .timeline-event {
     font-size: 15px;
     font-weight: 300;
-    color: var(--black);
+    color: var(--text-primary);
     line-height: 1.55;
     letter-spacing: -0.01em;
 }
@@ -282,21 +347,21 @@ main {
 .timeline-year {
     font-size: 13px;
     font-weight: 600;
-    color: var(--gray);
+    color: var(--text-secondary);
     min-width: 50px;
 }
 
 .timeline-label {
     font-size: 13px;
     font-weight: 400;
-    color: var(--black);
+    color: var(--text-primary);
     letter-spacing: -0.01em;
 }
 
 .tagline {
     font-size: 14px;
     font-weight: 300;
-    color: var(--gray);
+    color: var(--text-secondary);
     margin-bottom: 20px;
     padding-top: 10px;
 }
@@ -324,7 +389,7 @@ main {
 .section-block li {
     font-size: 14px;
     font-weight: 300;
-    color: var(--black);
+    color: var(--text-primary);
     line-height: 1.55;
     padding-left: 22px;
     position: relative;
@@ -341,13 +406,13 @@ main {
 
 .section-block li a {
     font-weight: 500;
-    color: var(--black);
+    color: var(--text-primary);
     border-bottom: 1px solid var(--light-gray);
     transition: border-color 0.2s;
 }
 
 .section-block li a:hover {
-    border-color: var(--black);
+    border-color: var(--text-primary);
 }
 
 /* Photo — in center column */
@@ -363,7 +428,7 @@ main {
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    color: var(--gray);
+    color: var(--text-secondary);
     font-weight: 400;
 }
 
@@ -422,7 +487,7 @@ main {
 
 .location {
     font-size: 14px;
-    color: var(--black);
+    color: var(--text-primary);
     font-weight: 400;
     letter-spacing: -0.01em;
 }
@@ -437,7 +502,7 @@ main {
 .right-bottom a {
     font-size: 13px;
     font-weight: 400;
-    color: var(--black);
+    color: var(--text-primary);
     transition: opacity 0.2s;
 }
 
@@ -445,7 +510,7 @@ main {
 
 .right-bottom span {
     font-size: 13px;
-    color: var(--gray);
+    color: var(--text-secondary);
 }
 
 /* ===========================
@@ -471,17 +536,18 @@ main {
 
 .work-card {
     padding: 32px;
-    border: 1px solid var(--light-gray);
+    border: 1px solid var(--border-color);
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    background: var(--bg-primary);
 }
 
 .work-card:hover {
-    border-color: var(--black);
+    border-color: var(--text-primary);
     transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
 }
 
 .card-header {
@@ -497,7 +563,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f9f9f9;
+    background: var(--bg-secondary);
     border-radius: 6px;
 }
 
@@ -509,7 +575,7 @@ main {
 .work-num {
     font-size: 12px;
     font-weight: 600;
-    color: var(--gray);
+    color: var(--text-secondary);
 }
 
 .work-card h3 {
@@ -521,7 +587,7 @@ main {
 .work-card p {
     font-size: 14px;
     font-weight: 300;
-    color: var(--gray);
+    color: var(--text-secondary);
     line-height: 1.6;
 }
 
@@ -530,7 +596,7 @@ main {
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--gray);
+    color: var(--text-secondary);
     margin-top: auto;
     padding-top: 10px;
 }
@@ -557,18 +623,19 @@ main {
     align-items: center;
     gap: 16px;
     padding: 24px;
-    border: 1px solid var(--light-gray);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     text-align: center;
     transition: all 0.3s ease;
     text-decoration: none;
     color: inherit;
+    background: var(--bg-primary);
 }
 
 .cert-badge:hover {
-    border-color: var(--black);
+    border-color: var(--text-primary);
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
 }
 
 .cert-icon {
@@ -598,7 +665,7 @@ main {
     font-weight: 500;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--gray);
+    color: var(--text-secondary);
     margin: 0;
 }
 
@@ -623,13 +690,13 @@ main {
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--gray);
+    color: var(--text-secondary);
 }
 
 .meta-value {
     font-size: 14px;
     font-weight: 400;
-    color: var(--black);
+    color: var(--text-primary);
     letter-spacing: -0.01em;
 }
 
@@ -690,12 +757,12 @@ main {
 }
 
 .cta-secondary {
-    color: var(--black);
+    color: var(--text-primary);
     border-bottom: 1px solid var(--light-gray);
 }
 
 .cta-secondary:hover {
-    border-color: var(--black);
+    border-color: var(--text-primary);
 }
 
 /* ===========================
@@ -705,7 +772,7 @@ main {
     display: inline-block;
     animation: blink 0.8s step-end infinite;
     font-weight: 300;
-    color: var(--gray);
+    color: var(--text-secondary);
     margin-left: 1px;
 }
 

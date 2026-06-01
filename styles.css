@@ -327,6 +327,21 @@ main {
     letter-spacing: -0.01em;
 }
 
+/* Clickable timeline entries */
+a.timeline-entry {
+    cursor: pointer;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+a.timeline-entry:hover {
+    opacity: 0.7;
+}
+
+a.timeline-entry:hover .timeline-event {
+    text-decoration: underline;
+    font-weight: 400;
+}
+
 .timeline-section {
     margin-top: 60px;
 }

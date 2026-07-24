@@ -21,6 +21,8 @@
 </head>
 <body>
 
+    <a href="#main" class="skip-link">skip to content</a>
+
     <!-- NAV -->
     <nav>
         <span class="nav-name">ARHUM ZAHID</span>
@@ -44,7 +46,7 @@
     </nav>
 
     <!-- MAIN — 3 column layout -->
-    <main>
+    <main id="main">
         <!-- LEFT COLUMN -->
         <div class="left-col">
             <div>
@@ -115,6 +117,14 @@
             <div class="photo-area">
                 <img src="profile.jpg" alt="Arhum Zahid" class="profile-photo">
             </div>
+
+            <!-- Featured project spotlight -->
+            <a href="projects/khaana.html" class="spotlight">
+                <span class="spotlight-label">featured work</span>
+                <h3>Khaana</h3>
+                <p>Leading growth for a voice-first cooking assistant. 80% day-one retention and 20% month-over-month growth through community-driven acquisition loops.</p>
+                <span class="spotlight-cta">read the case study &#8594;</span>
+            </a>
         </div>
 
         <!-- RIGHT COLUMN -->
@@ -122,10 +132,10 @@
             <div class="right-top">
                 <span class="status-badge">&#9670; open to connections :)</span>
                 <a href="work.html" class="view-work">view work &nbsp;&#8658;</a>
-                <span class="location">📍 based in Virginia</span>
+                <span class="location"><span aria-hidden="true">📍</span> based in Virginia</span>
             </div>
             <div class="right-bottom">
-                <a href="mailto:zarhum3@gmail.com">zarhum3@gmail.com</a>
+                <button class="copy-email" data-email="zarhum3@gmail.com" aria-label="Copy email address">zarhum3@gmail.com<span class="copy-feedback" aria-hidden="true">copied!</span></button>
                 <span>&copy; 2025</span>
             </div>
         </div>
@@ -177,5 +187,6 @@
 
     <script src="theme.js"></script>
     <script src="script.js"></script>
+    <script src="enhancements.js"></script>
 </body>
 </html>

@@ -21,6 +21,9 @@
 </head>
 <body>
 
+    <a href="#main" class="skip-link">skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
     <!-- NAV -->
     <nav>
         <span class="nav-name"><a href="../index.html">ARHUM ZAHID</a></span>
@@ -44,7 +47,7 @@
     </nav>
 
     <!-- MAIN — 3 column layout -->
-    <main>
+    <main id="main">
         <!-- LEFT COLUMN -->
         <div class="left-col">
             <div>
@@ -87,6 +90,15 @@
         <div class="center-col project-content">
             <h2 class="section-title">voice-first cooking assistant</h2>
 
+            <div class="stack-chips">
+                <span>growth loops</span>
+                <span>influencer partnerships</span>
+                <span>referral systems</span>
+                <span>push notifications</span>
+                <span>social content</span>
+                <span>community building</span>
+            </div>
+
             <!-- Challenge Section -->
             <div class="project-section">
                 <h3 class="milestone-heading">the challenge</h3>
@@ -128,17 +140,21 @@
             <div class="project-section">
                 <h3 class="milestone-heading">results & metrics</h3>
                 <p class="story-text">
-                    <strong>User Acquisition:</strong> 100+ users acquired through organic + paid channels
+                    <strong>User Acquisition:</strong> <span class="count-up">100+</span> users acquired through organic + paid channels
                 </p>
                 <p class="story-text">
-                    <strong>Retention:</strong> 80% day-one retention, [Metric placeholder] day-30 retention
+                    <strong>Retention:</strong> <span class="count-up">80%</span> day-one retention
                 </p>
                 <p class="story-text">
-                    <strong>Engagement:</strong> 5+ average daily active users, 10+ recipes completed per user per week
+                    <strong>Engagement:</strong> <span class="count-up">5+</span> average daily active users, <span class="count-up">10+</span> recipes completed per user per week
                 </p>
                 <p class="story-text">
-                    <strong>Growth:</strong> 20% month-over-month user growth
+                    <strong>Growth:</strong> <span class="count-up">20%</span> month-over-month user growth
                 </p>
+
+                <div class="project-visual">
+                    app screenshots & growth charts coming soon
+                </div>
             </div>
 
             <!-- Learnings Section -->
@@ -194,10 +210,10 @@
             <div class="right-top">
                 <span class="status-badge">&#9670; growth operator</span>
                 <a href="../work.html" class="view-work">view work &nbsp;&#8658;</a>
-                <span class="location">📍 based in Virginia</span>
+                <span class="location"><span aria-hidden="true">📍</span> based in Virginia</span>
             </div>
             <div class="right-bottom">
-                <a href="mailto:zarhum3@gmail.com">zarhum3@gmail.com</a>
+                <button class="copy-email" data-email="zarhum3@gmail.com" aria-label="Copy email address">zarhum3@gmail.com<span class="copy-feedback" aria-hidden="true">copied!</span></button>
                 <span>&copy; 2025</span>
             </div>
         </div>
@@ -249,5 +265,6 @@
 
     <script src="../theme.js"></script>
     <script src="../script.js"></script>
+    <script src="../enhancements.js"></script>
 </body>
 </html>

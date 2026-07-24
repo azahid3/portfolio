@@ -21,6 +21,8 @@
 </head>
 <body>
 
+    <a href="#main" class="skip-link">skip to content</a>
+
     <!-- NAV -->
     <nav>
         <span class="nav-name"><a href="index.html">ARHUM ZAHID</a></span>
@@ -44,7 +46,7 @@
     </nav>
 
     <!-- MAIN — 3 column layout -->
-    <main>
+    <main id="main">
         <!-- LEFT COLUMN -->
         <div class="left-col">
             <div>
@@ -107,10 +109,10 @@
             <div class="right-top">
                 <span class="status-badge">&#9670; building & scaling</span>
                 <a href="work.html" class="view-work">view work &nbsp;&#8658;</a>
-                <span class="location">📍 based in Virginia</span>
+                <span class="location"><span aria-hidden="true">📍</span> based in Virginia</span>
             </div>
             <div class="right-bottom">
-                <a href="mailto:zarhum3@gmail.com">zarhum3@gmail.com</a>
+                <button class="copy-email" data-email="zarhum3@gmail.com" aria-label="Copy email address">zarhum3@gmail.com<span class="copy-feedback" aria-hidden="true">copied!</span></button>
                 <span>&copy; 2025</span>
             </div>
         </div>
@@ -162,5 +164,6 @@
 
     <script src="theme.js"></script>
     <script src="script.js"></script>
+    <script src="enhancements.js"></script>
 </body>
 </html>

@@ -15,7 +15,7 @@
     --bg-primary: #ffffff;
     --bg-secondary: #f9f9f9;
     --text-primary: #000000;
-    --text-secondary: #888888;
+    --text-secondary: #6b6b6b;
     --border-color: #e0e0e0;
     --nav-bg: #ffffff;
 }
@@ -101,8 +101,49 @@ nav {
     width: 20px;
     height: 1.5px;
     background: var(--text-primary);
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.25s ease;
 }
+
+body.menu-open .hamburger span:nth-child(1) {
+    transform: translateY(3.25px) rotate(45deg);
+}
+
+body.menu-open .hamburger span:nth-child(2) {
+    transform: translateY(-3.25px) rotate(-45deg);
+}
+
+/* Mobile dropdown menu (toggled by hamburger) */
+.mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 28px 20px;
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--border-color);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+
+body.menu-open .mobile-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.mobile-menu a {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mobile-menu a:last-child { border-bottom: none; }
 
 .theme-toggle {
     background: none;
@@ -1051,4 +1092,363 @@ h1.visible, h2.visible, h3.visible {
     .work-grid { grid-template-columns: 1fr; }
     .work-card { padding: 24px; }
     .skills-list span { font-size: 14px; }
+}
+
+/* ===========================
+   ACCESSIBILITY
+   =========================== */
+
+/* Skip to content link */
+.skip-link {
+    position: absolute;
+    top: -48px;
+    left: 16px;
+    z-index: 200;
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 12px;
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .marquee-track { animation: none !important; }
+}
+
+/* ===========================
+   SCROLL PROGRESS BAR
+   =========================== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: var(--text-primary);
+    z-index: 150;
+    transition: width 0.1s linear;
+}
+
+/* ===========================
+   TIMELINE HOVER TEASERS
+   =========================== */
+a.timeline-entry {
+    position: relative;
+}
+
+a.timeline-entry::after {
+    content: attr(data-teaser);
+    position: absolute;
+    left: 172px;
+    bottom: -6px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+}
+
+a.timeline-entry:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+a.timeline-entry .timeline-event::after {
+    content: ' \2192';
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+a.timeline-entry:hover .timeline-event::after {
+    opacity: 1;
+}
+
+/* ===========================
+   COPY EMAIL BUTTON
+   =========================== */
+.copy-email {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    letter-spacing: inherit;
+}
+
+.copy-email:hover {
+    opacity: 0.7;
+}
+
+.copy-email .copy-feedback {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+}
+
+.copy-email.copied .copy-feedback {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ===========================
+   WORK CARD & CERT TILT
+   =========================== */
+.work-card,
+.cert-badge {
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* ===========================
+   PAGE TRANSITION FADE
+   =========================== */
+body {
+    animation: pageFadeIn 0.35s ease;
+}
+
+body.page-exit {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+@keyframes pageFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ===========================
+   CURRENTLY WIDGET (home)
+   =========================== */
+.currently {
+    margin-top: 48px;
+    padding: 20px 24px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+}
+
+.currently-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.currently-title .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulseDot 2s ease infinite;
+}
+
+@keyframes pulseDot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+    50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+}
+
+.currently-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.currently-list li {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.currently-list li strong {
+    font-weight: 600;
+}
+
+/* ===========================
+   FEATURED PROJECT SPOTLIGHT (home)
+   =========================== */
+.spotlight {
+    display: block;
+    margin-top: 24px;
+    padding: 24px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.spotlight:hover {
+    border-color: var(--text-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.spotlight-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.spotlight h3 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+
+.spotlight p {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-bottom: 12px;
+}
+
+.spotlight .spotlight-cta {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ===========================
+   TECH STACK CHIPS (case studies)
+   =========================== */
+.stack-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 24px 0 8px;
+}
+
+.stack-chips span {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 6px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+}
+
+/* ===========================
+   ACHIEVEMENT LISTS (case studies)
+   =========================== */
+.achievement-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 8px 0 16px;
+}
+
+.achievement-list li {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text-primary);
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+    padding-left: 20px;
+    position: relative;
+}
+
+.achievement-list li::before {
+    content: '\2192';
+    position: absolute;
+    left: 0;
+    color: var(--text-secondary);
+}
+
+/* ===========================
+   VISUALS PLACEHOLDER (case studies)
+   =========================== */
+.project-visual {
+    margin: 32px 0;
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+    background: var(--bg-secondary);
+}
+
+/* ===========================
+   404 PAGE
+   =========================== */
+.notfound {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--page-pad);
+}
+
+.notfound h1 {
+    font-size: clamp(80px, 14vw, 160px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.notfound p {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin: 16px 0 32px;
+}
+
+.notfound a {
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid var(--text-primary);
+    padding-bottom: 2px;
 }

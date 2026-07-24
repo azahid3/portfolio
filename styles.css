@@ -1335,6 +1335,34 @@ body.page-exit {
 }
 
 /* ===========================
+   ACHIEVEMENT LISTS (case studies)
+   =========================== */
+.achievement-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 8px 0 16px;
+}
+
+.achievement-list li {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text-primary);
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+    padding-left: 20px;
+    position: relative;
+}
+
+.achievement-list li::before {
+    content: '\2192';
+    position: absolute;
+    left: 0;
+    color: var(--text-secondary);
+}
+
+/* ===========================
    VISUALS PLACEHOLDER (case studies)
    =========================== */
 .project-visual {

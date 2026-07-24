@@ -90,6 +90,27 @@
         });
     }
 
+    // --- Hamburger mobile menu ---
+    const hamburger = document.querySelector('.hamburger');
+    const navEl = document.querySelector('nav');
+    if (hamburger && navEl) {
+        const panel = document.createElement('div');
+        panel.className = 'mobile-menu';
+        document.querySelectorAll('.nav-links > a').forEach((a) => panel.appendChild(a.cloneNode(true)));
+        navEl.appendChild(panel);
+        hamburger.setAttribute('aria-expanded', 'false');
+        const closeMenu = () => {
+            document.body.classList.remove('menu-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        };
+        hamburger.addEventListener('click', () => {
+            const open = document.body.classList.toggle('menu-open');
+            hamburger.setAttribute('aria-expanded', String(open));
+        });
+        panel.addEventListener('click', closeMenu);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+    }
+
     // --- Page transition fade ---
     if (!reducedMotion) {
         document.querySelectorAll('a[href]').forEach((link) => {

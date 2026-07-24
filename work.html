@@ -21,6 +21,8 @@
 </head>
 <body>
 
+    <a href="#main" class="skip-link">skip to content</a>
+
     <!-- NAV -->
     <nav>
         <span class="nav-name"><a href="index.html">ARHUM ZAHID</a></span>
@@ -44,7 +46,7 @@
     </nav>
 
     <!-- MAIN — 3 column layout -->
-    <main>
+    <main id="main">
         <!-- LEFT COLUMN -->
         <div class="left-col">
             <div>
@@ -70,7 +72,7 @@
             <div class="timeline-section">
                 <h2 class="section-title">timeline</h2>
                 <div class="timeline">
-                    <a href="projects/navy-federal.html" class="timeline-entry">
+                    <a href="projects/navy-federal.html" class="timeline-entry" data-teaser="managing vulnerabilities across an enterprise EUC environment">
                         <span class="timeline-date">Aug 2023 - Mar 2025</span>
                         <span class="timeline-event">Vulnerability Management Intern - Navy Federal Credit Union</span>
                     </a>
@@ -78,15 +80,15 @@
                         <span class="timeline-date">Dec 2024</span>
                         <span class="timeline-event">B.S. in IT, Cybersecurity - George Mason University</span>
                     </div>
-                    <a href="projects/ida.html" class="timeline-entry">
+                    <a href="projects/ida.html" class="timeline-entry" data-teaser="securing virtualization infrastructure for defense research">
                         <span class="timeline-date">Mar 2025 - Jun 2025</span>
                         <span class="timeline-event">Cybersecurity Intern - Institute for Defense Analyses</span>
                     </a>
-                    <a href="projects/arrow-electronics.html" class="timeline-entry">
+                    <a href="projects/arrow-electronics.html" class="timeline-entry" data-teaser="architecting Nutanix hybrid cloud solutions for enterprises">
                         <span class="timeline-date">Jun 2025 - Present</span>
                         <span class="timeline-event">Solutions Engineer - Arrow Electronics</span>
                     </a>
-                    <a href="projects/khaana.html" class="timeline-entry">
+                    <a href="projects/khaana.html" class="timeline-entry" data-teaser="80% day-one retention, 20% month-over-month growth">
                         <span class="timeline-date">Mar 2026 - Present</span>
                         <span class="timeline-event">Head of Growth - KhaanaAI</span>
                     </a>
@@ -168,10 +170,10 @@
             <div class="right-top">
                 <span class="status-badge">&#9670; building & scaling</span>
                 <a href="index.html" class="view-work">back home &nbsp;&#8658;</a>
-                <span class="location">📍 based in Virginia</span>
+                <span class="location"><span aria-hidden="true">📍</span> based in Virginia</span>
             </div>
             <div class="right-bottom">
-                <a href="mailto:zarhum3@gmail.com">zarhum3@gmail.com</a>
+                <button class="copy-email" data-email="zarhum3@gmail.com" aria-label="Copy email address">zarhum3@gmail.com<span class="copy-feedback" aria-hidden="true">copied!</span></button>
                 <span>&copy; 2025</span>
             </div>
         </div>
@@ -224,5 +226,6 @@
     <script src="theme.js"></script>
     <script src="script.js"></script>
     <script src="work-script.js"></script>
+    <script src="enhancements.js"></script>
 </body>
 </html>

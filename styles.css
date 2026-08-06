@@ -317,14 +317,18 @@ main {
     letter-spacing: -0.01em;
 }
 
+.page-footer-index {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 60px var(--page-pad) 80px;
+}
+
 .skills-list-bottom {
     display: flex;
     flex-direction: column;
     gap: 0;
     border-top: 1px solid var(--light-gray);
     padding-top: 40px;
-    margin-top: 80px;
-    grid-column: 1 / -1;
 }
 
 .skills-list-bottom span {
@@ -340,7 +344,6 @@ main {
     display: flex;
     gap: 14px;
     margin-top: 20px;
-    grid-column: 1 / -1;
 }
 
 .socials-bottom a {

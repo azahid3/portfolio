@@ -315,6 +315,46 @@ main {
     letter-spacing: -0.01em;
 }
 
+.skills-list-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--light-gray);
+    padding-top: 40px;
+    margin-top: 80px;
+    grid-column: 1 / -1;
+}
+
+.skills-list-bottom span {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--text-primary);
+    padding: 14px 0;
+    border-top: 1px solid var(--light-gray);
+    letter-spacing: -0.01em;
+}
+
+.socials-bottom {
+    display: flex;
+    gap: 14px;
+    margin-top: 20px;
+    grid-column: 1 / -1;
+}
+
+.socials-bottom a {
+    color: var(--text-primary);
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.socials-bottom a:hover { opacity: 0.5; }
+
+.socials-bottom svg {
+    stroke: currentColor;
+}
+
 /* CENTER COLUMN */
 .center-col {
     flex: 1;

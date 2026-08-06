@@ -5,12 +5,16 @@
     // --- Scroll progress bar (case study pages) ---
     const progress = document.querySelector('.scroll-progress');
     if (progress) {
+        let animationId = null;
         const update = () => {
+            animationId = null;
             const doc = document.documentElement;
             const max = doc.scrollHeight - doc.clientHeight;
             progress.style.width = max > 0 ? (doc.scrollTop / max) * 100 + '%' : '0%';
         };
-        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('scroll', () => {
+            if (!animationId) animationId = requestAnimationFrame(update);
+        }, { passive: true });
         update();
     }
 

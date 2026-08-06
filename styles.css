@@ -220,14 +220,16 @@ main {
     font-weight: 600;
     line-height: 0.95;
     letter-spacing: -0.03em;
-    word-break: break-word;
+    word-break: normal;
+    overflow-wrap: normal;
 }
 
 .greeting {
-    display: inline-block;
+    display: block;
 }
 
 .greeting .meaning {
+    display: inline-block;
     font-size: 0.5em;
     font-weight: 400;
     opacity: 0.6;

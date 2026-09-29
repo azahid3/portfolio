@@ -28,6 +28,7 @@ html.dark-mode {
     --text-secondary: #b0b0b0;
     --border-color: #3a3a3a;
     --nav-bg: #1a1a1a;
+    --light-gray: #3a3a3a;
 }
 
 html { scroll-behavior: smooth; }
@@ -45,8 +46,8 @@ body {
 a { color: inherit; text-decoration: none; }
 
 ::selection {
-    background: var(--black);
-    color: var(--white);
+    background: var(--text-primary);
+    color: var(--bg-primary);
 }
 
 /* ===========================
@@ -58,7 +59,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 28px;
+    /* Horizontal padding tracks main's 1440px container so the nav lines up with the content */
+    padding: 20px max(var(--page-pad), calc((100% - 1440px) / 2 + var(--page-pad)));
     z-index: 100;
     background: var(--nav-bg);
     border-bottom: 1px solid var(--border-color);
@@ -86,14 +88,21 @@ nav {
 
 .nav-links a:hover { opacity: 0.5; }
 
+/* Only shown at ≤640px, where ABOUT/WORK collapse into the dropdown */
 .hamburger {
     background: none;
     border: none;
     cursor: pointer;
-    display: flex;
+    display: none;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 5px;
-    padding: 4px;
+    /* 44x44 tap target around the 20px icon; negative margins keep the nav height unchanged */
+    width: 44px;
+    height: 44px;
+    margin: -10px -12px -10px 0;
+    padding: 0;
 }
 
 .hamburger span {
@@ -120,7 +129,7 @@ body.menu-open .hamburger span:nth-child(2) {
     right: 0;
     display: flex;
     flex-direction: column;
-    padding: 8px 28px 20px;
+    padding: 8px var(--page-pad) 20px;
     background: var(--nav-bg);
     border-bottom: 1px solid var(--border-color);
     opacity: 0;
@@ -145,6 +154,10 @@ body.menu-open .mobile-menu {
 
 .mobile-menu a:last-child { border-bottom: none; }
 
+@media (min-width: 641px) {
+    .mobile-menu { display: none; }
+}
+
 .theme-toggle {
     background: none;
     border: none;
@@ -155,7 +168,6 @@ body.menu-open .mobile-menu {
     width: 24px;
     height: 24px;
     padding: 4px;
-    margin-right: 12px;
 }
 
 .theme-toggle svg {
@@ -193,6 +205,8 @@ html.dark-mode .moon-icon {
    =========================== */
 main {
     min-height: 100vh;
+    max-width: 1440px;
+    margin: 0 auto;
     padding: 0 var(--page-pad);
     display: flex;
     gap: 32px;
@@ -235,6 +249,16 @@ main {
     font-weight: 400;
     opacity: 0.6;
     margin-left: 0.15em;
+}
+
+/* "(greetings)" never fits beside "salaams" in the 300px desktop column, so give it
+   its own evenly spaced line instead of an uneven wrap */
+@media (min-width: 1025px) {
+    .greeting .meaning {
+        display: block;
+        line-height: 1.1;
+        margin: 0.15em 0 0.3em;
+    }
 }
 
 /* Socials — vertical icons below intro */
@@ -319,7 +343,7 @@ main {
 }
 
 .page-footer-index {
-    max-width: 1600px;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 60px var(--page-pad) 80px;
 }
@@ -366,7 +390,12 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding-top: 0;
+    /* Clears the fixed nav and lines up with the left-column title */
+    padding-top: 100px;
+}
+
+.center-col > :first-child {
+    margin-top: 0;
 }
 
 .section-title {
@@ -486,7 +515,8 @@ a.timeline-entry:hover .timeline-event {
 
 .sections-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* Two columns when there's room, one when the center column is narrow */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 24px 48px;
 }
 
@@ -589,8 +619,8 @@ a.timeline-entry:hover .timeline-event {
 .view-work {
     display: inline-block;
     padding: 12px 24px;
-    background: var(--black);
-    color: var(--white);
+    background: var(--text-primary);
+    color: var(--bg-primary);
     font-size: 15px;
     font-weight: 500;
     border-radius: 999px;
@@ -821,10 +851,6 @@ a.timeline-entry:hover .timeline-event {
 /* ===========================
    PROJECT CONTENT
    =========================== */
-.project-content {
-    padding-top: 60px;
-}
-
 .project-section {
     margin-bottom: 60px;
 }
@@ -864,8 +890,8 @@ a.timeline-entry:hover .timeline-event {
 }
 
 .cta-primary {
-    background: var(--black);
-    color: var(--white);
+    background: var(--text-primary);
+    color: var(--bg-primary);
     border-radius: 999px;
 }
 
@@ -1083,7 +1109,7 @@ h1.visible, h2.visible, h3.visible {
     top: 0;
     left: 0;
     height: 2px;
-    background: var(--black);
+    background: var(--text-primary);
     transition: width 0.1s ease;
     z-index: 101;
 }
@@ -1104,6 +1130,12 @@ h1.visible, h2.visible, h3.visible {
         position: static;
         padding: 100px 0 0;
     }
+
+    /* Full-width column here, so the title can be larger than the 300px desktop cap */
+    .intro h1 { font-size: clamp(52px, 7vw, 72px); }
+
+    /* main's 40px gap already separates a lone title from the content below */
+    .left-col .intro:last-child { margin-bottom: 0; }
 
     .center-col {
         padding-top: 0;
@@ -1145,6 +1177,7 @@ h1.visible, h2.visible, h3.visible {
     :root { --page-pad: 16px; }
     nav { padding: 16px var(--page-pad); }
     .nav-links a:not(:last-of-type) { display: none; }
+    .hamburger { display: flex; }
     .intro h1 { font-size: 52px; }
     .work-grid { grid-template-columns: 1fr; }
     .work-card { padding: 24px; }

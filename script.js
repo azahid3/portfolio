@@ -99,4 +99,5 @@ function type() {
     }
 }
 
-type();
+// The typewriter only exists on the home page
+if (typewriterEl) type();

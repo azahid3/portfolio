@@ -100,8 +100,10 @@
     if (hamburger && navEl) {
         const panel = document.createElement('div');
         panel.className = 'mobile-menu';
+        panel.id = 'mobile-menu';
         document.querySelectorAll('.nav-links > a').forEach((a) => panel.appendChild(a.cloneNode(true)));
         navEl.appendChild(panel);
+        hamburger.setAttribute('aria-controls', 'mobile-menu');
         hamburger.setAttribute('aria-expanded', 'false');
         const closeMenu = () => {
             document.body.classList.remove('menu-open');
@@ -113,6 +115,12 @@
         });
         panel.addEventListener('click', closeMenu);
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+        // Tapping anywhere outside the nav closes the dropdown
+        document.addEventListener('click', (e) => {
+            if (document.body.classList.contains('menu-open') && !navEl.contains(e.target)) closeMenu();
+        });
+        // The dropdown only exists on phones; close it if the window grows past that
+        window.matchMedia('(min-width: 641px)').addEventListener('change', (e) => { if (e.matches) closeMenu(); });
     }
 
     // --- Page transition fade ---

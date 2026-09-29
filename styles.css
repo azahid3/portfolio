@@ -8,34 +8,57 @@
     --black: #000;
     --white: #fff;
     --gray: #888;
-    --light-gray: #e0e0e0;
+    --light-gray: #dce5ec;
     --page-pad: 20px;
 
-    /* Light mode colors */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f9f9f9;
-    --text-primary: #000000;
-    --text-secondary: #6b6b6b;
-    --border-color: #e0e0e0;
-    --nav-bg: #ffffff;
+    /* Light mode colors: off-white with a sky-blue wash, charcoal-blue text */
+    --bg-primary: #f7f9fb;
+    --bg-secondary: #eef3f7;
+    --text-primary: #1f2a33;
+    --text-secondary: #4f5e6b;
+    --border-color: #dce5ec;
+    --nav-bg: rgba(247, 249, 251, 0.82);
+    --wash-1: #d3e4f1;
+    --wash-2: #e2edf6;
+    --accent: #5aa9e6;       /* decorative: stars, wavy underlines, cursor, progress bar */
+    --accent-ink: #2f7fb8;   /* accent where it has to read as text or an indicator */
+    --highlight: #dcebf7;
+    --khatam: #6f95b5;
+    --footer-bg: #132433;
+
+    /* 8-point star (two overlapping squares), used as a mask so it takes any color */
+    --star-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-10 -10 20 20'%3E%3Crect x='-6.5' y='-6.5' width='13' height='13'/%3E%3Crect x='-6.5' y='-6.5' width='13' height='13' transform='rotate(45)'/%3E%3C/svg%3E");
 }
 
-/* Dark mode */
+/* Dark mode: deep navy instead of flat grey */
 html.dark-mode {
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2a2a2a;
-    --text-primary: #ffffff;
-    --text-secondary: #b0b0b0;
-    --border-color: #3a3a3a;
-    --nav-bg: #1a1a1a;
-    --light-gray: #3a3a3a;
+    --bg-primary: #10161d;
+    --bg-secondary: #17202a;
+    --text-primary: #e8eef3;
+    --text-secondary: #9aabb9;
+    --border-color: #253341;
+    --nav-bg: rgba(16, 22, 29, 0.82);
+    --light-gray: #253341;
+    --wash-1: #1b2c3b;
+    --wash-2: #141f29;
+    --accent: #7fc0f0;
+    --accent-ink: #8cc8f2;
+    --highlight: #1e3547;
+    --khatam: #8fb3d1;
+    --footer-bg: #0a0f14;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
     font-family: var(--font);
-    background: var(--bg-primary);
+    background-color: var(--bg-primary);
+    /* Soft sky-blue wash across the top of every page, fading out by ~900px */
+    background-image:
+        radial-gradient(120% 90% at 0% 0%, var(--wash-1) 0%, transparent 60%),
+        radial-gradient(110% 80% at 100% 0%, var(--wash-2) 0%, transparent 55%);
+    background-size: 100% 960px;
+    background-repeat: no-repeat;
     color: var(--text-primary);
     line-height: 1.5;
     overflow-x: hidden;
@@ -46,8 +69,16 @@ body {
 a { color: inherit; text-decoration: none; }
 
 ::selection {
-    background: var(--text-primary);
-    color: var(--bg-primary);
+    background: var(--highlight);
+    color: var(--text-primary);
+}
+
+/* Light-blue highlighter behind key names */
+mark.hl {
+    background: var(--highlight);
+    color: inherit;
+    border-radius: 3px;
+    padding: 0 3px;
 }
 
 /* ===========================
@@ -62,15 +93,31 @@ nav {
     /* Horizontal padding tracks main's 1440px container so the nav lines up with the content */
     padding: 20px max(var(--page-pad), calc((100% - 1440px) / 2 + var(--page-pad)));
     z-index: 100;
+    /* Frosted, so the blue wash shows through instead of a hard white bar */
     background: var(--nav-bg);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+    backdrop-filter: saturate(160%) blur(12px);
     border-bottom: 1px solid var(--border-color);
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .nav-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: -0.01em;
+}
+
+/* Spinning 8-point star (khatam) drawn in text characters; filled in by enhancements.js */
+.khatam {
+    margin: 0;
+    font: 2.5px/2.5px ui-monospace, Menlo, Monaco, "Courier New", monospace;
+    letter-spacing: 0;
+    color: var(--khatam);
+    user-select: none;
+    pointer-events: none;
 }
 
 .nav-links {
@@ -130,7 +177,7 @@ body.menu-open .hamburger span:nth-child(2) {
     display: flex;
     flex-direction: column;
     padding: 8px var(--page-pad) 20px;
-    background: var(--nav-bg);
+    background: var(--bg-primary);
     border-bottom: 1px solid var(--border-color);
     opacity: 0;
     visibility: hidden;
@@ -349,11 +396,38 @@ main {
 }
 
 .skills-list-bottom {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 0;
-    border-top: 1px solid var(--light-gray);
-    padding-top: 40px;
+}
+
+/* Star dividers: line, 8-point star, line (skills index, certifications, project CTAs) */
+.skills-list-bottom::before,
+.certifications-section::before,
+.project-cta::before {
+    content: '';
+    display: block;
+    flex: none;
+    height: 11px;
+    margin-bottom: 40px;
+    background:
+        linear-gradient(var(--border-color), var(--border-color)) left center / calc(50% - 18px) 1px no-repeat,
+        linear-gradient(var(--border-color), var(--border-color)) right center / calc(50% - 18px) 1px no-repeat;
+}
+
+.skills-list-bottom::after,
+.certifications-section::after,
+.project-cta::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(50% - 5.5px);
+    width: 11px;
+    height: 11px;
+    background: var(--accent);
+    -webkit-mask: var(--star-mask) center / contain no-repeat;
+    mask: var(--star-mask) center / contain no-repeat;
 }
 
 .skills-list-bottom span {
@@ -544,23 +618,30 @@ a.timeline-entry:hover .timeline-event {
     letter-spacing: -0.01em;
 }
 
+/* 8-point star bullet */
 .section-block li::before {
-    content: '\2299';
+    content: '';
     position: absolute;
-    left: 0;
-    font-size: 12px;
-    top: 1px;
+    left: 1px;
+    top: 0.45em;
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    -webkit-mask: var(--star-mask) center / contain no-repeat;
+    mask: var(--star-mask) center / contain no-repeat;
 }
 
 .section-block li a {
     font-weight: 500;
     color: var(--text-primary);
-    border-bottom: 1px solid var(--light-gray);
-    transition: border-color 0.2s;
+    text-decoration: underline wavy var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: text-decoration-color 0.2s;
 }
 
 .section-block li a:hover {
-    border-color: var(--text-primary);
+    text-decoration-color: var(--text-primary);
 }
 
 /* Photo — in center column */
@@ -753,10 +834,11 @@ a.timeline-entry:hover .timeline-event {
    CERTIFICATIONS
    =========================== */
 .certifications-section {
+    position: relative;
     margin-top: 80px;
-    padding-top: 60px;
-    border-top: 1px solid var(--light-gray);
 }
+
+.certifications-section::before { margin-bottom: 60px; }
 
 .certifications-grid {
     display: grid;
@@ -870,13 +952,14 @@ a.timeline-entry:hover .timeline-event {
 
 /* Project CTAs */
 .project-cta {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 16px;
     margin-top: 60px;
-    padding-top: 40px;
-    border-top: 1px solid var(--light-gray);
 }
+
+.project-cta::before { margin-bottom: 24px; }
 
 .cta-primary,
 .cta-secondary {
@@ -916,7 +999,7 @@ a.timeline-entry:hover .timeline-event {
     display: inline-block;
     animation: blink 0.8s step-end infinite;
     font-weight: 300;
-    color: var(--text-secondary);
+    color: var(--accent);
     margin-left: 1px;
 }
 
@@ -928,7 +1011,7 @@ a.timeline-entry:hover .timeline-event {
    DARK FOOTER
    =========================== */
 .dark-footer {
-    background: var(--black);
+    background: var(--footer-bg);
     color: var(--white);
     padding: 60px 28px 24px;
 }
@@ -1109,7 +1192,7 @@ h1.visible, h2.visible, h3.visible {
     top: 0;
     left: 0;
     height: 2px;
-    background: var(--text-primary);
+    background: var(--accent);
     transition: width 0.1s ease;
     z-index: 101;
 }
@@ -1176,7 +1259,8 @@ h1.visible, h2.visible, h3.visible {
 @media (max-width: 640px) {
     :root { --page-pad: 16px; }
     nav { padding: 16px var(--page-pad); }
-    .nav-links a:not(:last-of-type) { display: none; }
+    /* All three links live in the dropdown here, leaving room for the name and khatam */
+    .nav-links a { display: none; }
     .hamburger { display: flex; }
     .intro h1 { font-size: 52px; }
     .work-grid { grid-template-columns: 1fr; }
@@ -1239,7 +1323,7 @@ button:focus-visible {
     left: 0;
     height: 3px;
     width: 0%;
-    background: var(--text-primary);
+    background: var(--accent);
     z-index: 150;
     transition: width 0.1s linear;
 }
@@ -1577,7 +1661,7 @@ body.page-exit {
 
 .vendor-tab[aria-selected="true"] {
     color: var(--text-primary);
-    border-bottom-color: var(--text-primary);
+    border-bottom-color: var(--accent-ink);
 }
 
 .vendor-num {
@@ -1635,6 +1719,7 @@ body.page-exit {
     font-weight: 800;
     letter-spacing: -0.04em;
     line-height: 1;
+    color: var(--accent-ink);
 }
 
 .vendor-stat-label {

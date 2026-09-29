@@ -123,6 +123,50 @@
         window.matchMedia('(min-width: 641px)').addEventListener('change', (e) => { if (e.matches) closeMenu(); });
     }
 
+    // --- Vendor tabs (Arrow page) ---
+    // The buttons carry data-panel (panel id) and data-hash (shareable #link, e.g. #nutanix).
+    const vendorSwitch = document.querySelector('.vendor-switch');
+    if (vendorSwitch) {
+        const tabs = [...vendorSwitch.querySelectorAll('.vendor-tab')];
+        const panels = tabs.map((tab) => document.getElementById(tab.dataset.panel));
+        vendorSwitch.setAttribute('role', 'tablist');
+        vendorSwitch.setAttribute('aria-label', 'Vendors I support');
+        tabs.forEach((tab, i) => {
+            tab.id = 'tab-' + tab.dataset.hash;
+            tab.setAttribute('role', 'tab');
+            tab.setAttribute('aria-controls', panels[i].id);
+            panels[i].setAttribute('role', 'tabpanel');
+            panels[i].setAttribute('aria-labelledby', tab.id);
+            panels[i].removeAttribute('aria-label');
+            panels[i].tabIndex = 0;
+        });
+        const select = (index, { focus = false, updateHash = false } = {}) => {
+            tabs.forEach((tab, i) => {
+                const active = i === index;
+                tab.setAttribute('aria-selected', String(active));
+                tab.tabIndex = active ? 0 : -1;
+                panels[i].hidden = !active;
+            });
+            if (focus) tabs[index].focus();
+            if (updateHash) history.replaceState(null, '', '#' + tabs[index].dataset.hash);
+        };
+        const indexFromHash = () => tabs.findIndex((tab) => '#' + tab.dataset.hash === location.hash);
+        select(Math.max(indexFromHash(), 0));
+        tabs.forEach((tab, i) => {
+            tab.addEventListener('click', () => select(i, { updateHash: true }));
+            tab.addEventListener('keydown', (e) => {
+                const moves = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 };
+                if (!(e.key in moves)) return;
+                e.preventDefault();
+                select((moves[e.key] + tabs.length) % tabs.length, { focus: true, updateHash: true });
+            });
+        });
+        window.addEventListener('hashchange', () => {
+            const i = indexFromHash();
+            if (i >= 0) select(i);
+        });
+    }
+
     // --- Page transition fade ---
     if (!reducedMotion) {
         document.querySelectorAll('a[href]').forEach((link) => {

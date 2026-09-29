@@ -1653,26 +1653,3 @@ body.page-exit {
     .vendor-stat-num { min-width: 76px; }
     .vendor-stat-label { margin-top: 0; }
 }
-
-/* Draft content waiting on real details */
-.draft-note {
-    border: 1px dashed var(--text-secondary);
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin-bottom: 24px;
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--text-secondary);
-}
-
-.draft-note strong {
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
-.vendor-summary.placeholder,
-.subsection-title.placeholder,
-.achievement-list li.placeholder {
-    color: var(--text-secondary);
-    font-style: italic;
-}

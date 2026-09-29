@@ -167,66 +167,6 @@
         });
     }
 
-    // --- Spinning khatam: an 8-point star drawn in text characters next to the name ---
-    const navName = document.querySelector('.nav-name');
-    if (navName) {
-        const art = document.createElement('pre');
-        art.className = 'khatam';
-        art.setAttribute('aria-hidden', 'true');
-        navName.prepend(art);
-
-        const COLS = 20;
-        const ROWS = 11;
-        const CHAR_W = 0.6;          // monospace glyph width relative to the line height
-        const RAMP = '.:-=+*#%@';    // light to dense
-        const TIP = Math.SQRT2;      // tip radius of a square unioned with its 45° turn
-        const scale = TIP / ((Math.min(COLS * CHAR_W, ROWS) / 2) * 0.98);
-
-        const draw = (t) => {
-            const turn = Math.cos(t * 0.9);             // 3D spin around the vertical axis
-            const light = 0.35 + 0.65 * Math.abs(turn); // dimmer as it turns edge-on
-            const cos = Math.cos(t * 0.3);              // slow rotation within the plane
-            const sin = Math.sin(t * 0.3);
-            const rows = [];
-            for (let row = 0; row < ROWS; row++) {
-                let line = '';
-                for (let col = 0; col < COLS; col++) {
-                    const u = (col - (COLS - 1) / 2) * CHAR_W * scale;
-                    const v = (row - (ROWS - 1) / 2) * scale;
-                    if (Math.abs(turn) < 0.08) {
-                        line += Math.abs(u) < 0.2 && Math.abs(v) < TIP ? ':' : ' ';
-                        continue;
-                    }
-                    const pu = u / turn;
-                    const x = pu * cos + v * sin;
-                    const y = -pu * sin + v * cos;
-                    const inset = Math.max(
-                        1 - Math.max(Math.abs(x), Math.abs(y)),
-                        1 - (Math.abs(x) + Math.abs(y)) / Math.SQRT2
-                    );
-                    const r = Math.hypot(x, y);
-                    if (inset < 0 || r < 0.3) { line += ' '; continue; }
-                    // bright ring around the hollow center, then denser toward the middle of each point
-                    const shade = r < 0.46 ? 0.95 : 0.2 + 0.75 * Math.min(1, inset * 2.5);
-                    line += RAMP[Math.min(RAMP.length - 1, Math.floor(shade * light * RAMP.length))];
-                }
-                rows.push(line);
-            }
-            art.textContent = rows.join('\n');
-        };
-
-        if (reducedMotion) {
-            draw(0.4);
-        } else {
-            let last = 0;
-            const tick = (now) => {
-                if (now - last > 50) { draw(now / 1000); last = now; } // ~20fps is plenty for text art
-                requestAnimationFrame(tick);
-            };
-            requestAnimationFrame(tick);
-        }
-    }
-
     // --- Page transition fade ---
     if (!reducedMotion) {
         document.querySelectorAll('a[href]').forEach((link) => {

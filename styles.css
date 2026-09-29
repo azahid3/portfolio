@@ -23,7 +23,6 @@
     --accent: #5aa9e6;       /* decorative: stars, wavy underlines, cursor, progress bar */
     --accent-ink: #2f7fb8;   /* accent where it has to read as text or an indicator */
     --highlight: #dcebf7;
-    --khatam: #6f95b5;
     --footer-bg: #132433;
 
     /* 8-point star (two overlapping squares), used as a mask so it takes any color */
@@ -44,7 +43,6 @@ html.dark-mode {
     --accent: #7fc0f0;
     --accent-ink: #8cc8f2;
     --highlight: #1e3547;
-    --khatam: #8fb3d1;
     --footer-bg: #0a0f14;
 }
 
@@ -102,22 +100,9 @@ nav {
 }
 
 .nav-name {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: -0.01em;
-}
-
-/* Spinning 8-point star (khatam) drawn in text characters; filled in by enhancements.js */
-.khatam {
-    margin: 0;
-    font: 2.5px/2.5px ui-monospace, Menlo, Monaco, "Courier New", monospace;
-    letter-spacing: 0;
-    color: var(--khatam);
-    user-select: none;
-    pointer-events: none;
 }
 
 .nav-links {
@@ -1259,8 +1244,7 @@ h1.visible, h2.visible, h3.visible {
 @media (max-width: 640px) {
     :root { --page-pad: 16px; }
     nav { padding: 16px var(--page-pad); }
-    /* All three links live in the dropdown here, leaving room for the name and khatam */
-    .nav-links a { display: none; }
+    .nav-links a:not(:last-of-type) { display: none; }
     .hamburger { display: flex; }
     .intro h1 { font-size: 52px; }
     .work-grid { grid-template-columns: 1fr; }
@@ -1270,6 +1254,11 @@ h1.visible, h2.visible, h3.visible {
     .dark-footer { padding: 40px 16px 20px; }
     .footer-top { flex-direction: column; gap: 40px; }
     .footer-right { gap: 40px; }
+}
+
+/* Very narrow phones: RESUME joins ABOUT and WORK in the dropdown so the name stays on one line */
+@media (max-width: 359px) {
+    .nav-links a { display: none; }
 }
 
 /* ===========================
